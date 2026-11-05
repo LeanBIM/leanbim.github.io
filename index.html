@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Remoto Pro: programa de acompañamiento para arquitectos que quieren posicionarse para oportunidades BIM internacionales.">
+  <title>Remoto Pro | Lean Aguero</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0c1b2d;
+      --panel: #10243a;
+      --text: #f4f7fb;
+      --muted: #a9b8ca;
+      --blue: #4da3ff;
+      --cyan: #65d7e8;
+      --line: rgba(255,255,255,.12);
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:24px 0; }
+    .brand { font-weight:800; letter-spacing:.08em; font-size:.95rem; }
+    .brand span { color:var(--blue); }
+    .nav a:last-child { color:var(--muted); font-size:.9rem; }
+    .hero { padding:86px 0 76px; background: radial-gradient(ellipse at 75% 20%, rgba(39,125,213,.24), transparent 45%), linear-gradient(180deg,#09182a 0%,var(--bg) 100%); }
+    .eyebrow { color:var(--cyan); font-size:.78rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
+    h1 { font-size:clamp(2.7rem,6vw,5.5rem); line-height:1.02; letter-spacing:-.055em; max-width:900px; margin:20px 0; }
+    h1 em { color:var(--blue); font-style:normal; }
+    .lead { max-width:660px; color:var(--muted); font-size:clamp(1.05rem,2vw,1.25rem); }
+    .hero-actions { display:flex; gap:14px; flex-wrap:wrap; margin:32px 0 18px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 22px; border-radius:8px; font-weight:750; transition:.2s; }
+    .btn-primary { background:var(--blue); color:#061323; }
+    .btn-primary:hover { background:#80bbff; transform:translateY(-2px); }
+    .btn-secondary { border:1px solid var(--line); color:var(--text); }
+    .micro { color:var(--muted); font-size:.85rem; }
+    .video-placeholder { margin-top:42px; width:min(760px,100%); aspect-ratio:16/9; border:1px solid var(--line); border-radius:16px; display:grid; place-items:center; background:linear-gradient(135deg,#142d49,#091522); color:#d6e7fa; overflow:hidden; }
+    .play { width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#061323;font-size:1.6rem;margin:auto auto 12px; }
+    section { padding:82px 0; }
+    .section-kicker { color:var(--blue); font-size:.78rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    h2 { font-size:clamp(2rem,4vw,3.5rem); line-height:1.1; letter-spacing:-.04em; max-width:850px; margin:12px 0 20px; }
+    .sub { color:var(--muted); max-width:760px; font-size:1.08rem; }
+    .quote { border-left:3px solid var(--blue); padding:20px 24px; margin:34px 0; background:rgba(255,255,255,.035); color:#dbe7f4; max-width:800px; font-size:1.2rem; }
+    .quote small { display:block; color:var(--muted); margin-top:10px; font-size:.85rem; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:34px; }
+    .grid.two { grid-template-columns:repeat(2,1fr); }
+    .card { padding:25px; background:var(--panel); border:1px solid var(--line); border-radius:14px; }
+    .card h3 { margin:0 0 10px; font-size:1.08rem; line-height:1.3; }
+    .card p { color:var(--muted); margin:0; }
+    .number { color:var(--blue); font-size:.85rem; font-weight:850; letter-spacing:.12em; margin-bottom:16px; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
+    .list { padding:0; list-style:none; margin:24px 0 0; }
+    .list li { padding:13px 0 13px 28px; border-bottom:1px solid var(--line); position:relative; color:#dbe5f0; }
+    .list li:before { content:"✓"; position:absolute; left:0; color:var(--cyan); font-weight:900; }
+    .no li:before { content:"×"; color:#ff9d9d; }
+    .dark-band { background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .steps { counter-reset:step; }
+    .step { position:relative; padding:28px; background:var(--panel); border:1px solid var(--line); border-radius:14px; }
+    .step .number { font-size:1rem; }
+    .testimonials { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:32px; }
+    .testimonial { min-height:230px; display:flex; flex-direction:column; justify-content:flex-end; padding:20px; border-radius:14px; background:linear-gradient(160deg,#183958,#0d1c2d 72%); border:1px solid var(--line); }
+    .testimonial strong { font-size:1rem; }
+    .testimonial span { color:var(--muted); font-size:.88rem; }
+    .cta { text-align:center; padding:88px 0; background:radial-gradient(ellipse at 50% 0%,rgba(49,139,224,.22),transparent 60%),var(--bg-soft); }
+    .cta h2 { margin-left:auto; margin-right:auto; }
+    .cta .sub { margin:0 auto 28px; }
+    footer { border-top:1px solid var(--line); padding:28px 0; color:var(--muted); font-size:.85rem; }
+    @media (max-width:800px) {
+      .grid,.grid.two,.split { grid-template-columns:1fr; }
+      .testimonials { grid-template-columns:repeat(2,1fr); }
+      .hero { padding:60px 0; }
+      section { padding:62px 0; }
+    }
+    @media (max-width:480px) {
+      .wrap { width:min(100% - 28px,var(--max)); }
+      .testimonials { grid-template-columns:1fr; }
+      .nav { padding:18px 0; }
+      .nav a:last-child { display:none; }
+      .btn { width:100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="#">LEAN <span>AGUERO</span></a>
+    <a href="#programa">Conocé Remoto Pro</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">BIM REMOTO · REMOTO PRO</div>
+        <h1>Hay arquitectos que saben lo mismo que vos y <em>cobran 3 veces más</em></h1>
+        <p class="lead">Porque compiten en otro mercado. No es tu culpa. Nadie te explicó cómo entrar.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacto">Agendar llamada de consulta</a>
+          <a class="btn btn-secondary" href="#programa">Quiero conocer el programa</a>
+        </div>
+        <div class="micro">Llamada de diagnóstico de 20 minutos · Primero hablamos. Después decidís.</div>
+        <div class="video-placeholder" aria-label="Espacio reservado para el video de presentación">
+          <div style="text-align:center;padding:20px">
+            <div class="play">▶</div>
+            <strong>Video de presentación de BIM Remoto</strong>
+            <div class="micro">Reemplazá este bloque por el video original de tu landing.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-kicker">El problema</div>
+        <h2>Hay arquitectos menos preparados que vos trabajando como BIM Modelers en proyectos de Estados Unidos.</h2>
+        <p class="sub">No porque sean mejores. Sino porque tienen un sistema.</p>
+        <div class="quote">“Tengo un amigo que consiguió trabajo para afuera y no entiendo cómo lo hizo. Terminamos juntos la facultad. Sabemos prácticamente lo mismo.”<small>— Nicolás, Arquitecto (Argentina)</small></div>
+        <p class="sub">La realidad es que no es más talentoso. Simplemente entendió cómo posicionarse para acceder a oportunidades que la mayoría de los arquitectos nunca llega a ver. Muchos profesionales creen que el problema es su nivel de Revit o su inglés. No es eso. El problema es que nadie les enseñó cómo posicionarse para competir por oportunidades para afuera.</p>
+      </div>
+    </section>
+
+    <section class="dark-band">
+      <div class="wrap">
+        <div class="section-kicker">¿En qué punto te encontrás?</div>
+        <h2>Si te suena alguna de estas, este programa es para vos.</h2>
+        <div class="grid">
+          <article class="card"><h3>Sabés que hay mejores oportunidades, pero no sabés por dónde empezar</h3><p>Saltás de curso en curso, pero seguís sin tener un plan claro.</p></article>
+          <article class="card"><h3>Creés que tu nivel de Revit o tu inglés no son suficientes</h3><p>Mientras esperás sentirte listo, otros arquitectos ya están trabajando para afuera.</p></article>
+          <article class="card"><h3>Mandás CVs y nadie responde</h3><p>Empezás a pensar que el problema sos vos.</p></article>
+          <article class="card"><h3>Tenés un amigo que consiguió trabajo para afuera y no entendés cómo lo hizo</h3><p>Terminó la facultad con vos. Sabe prácticamente lo mismo. Pero alguien le mostró el camino.</p></article>
+          <article class="card"><h3>Te piden portfolio. Lo mandás. Nunca responden.</h3><p>Mostrás tu trabajo, pero no logra diferenciarte de otros candidatos.</p></article>
+          <article class="card"><h3>Aprendiste Revit y seguís trabajando en CAD</h3><p>Sentís que todo el tiempo y dinero que invertiste en tu formación lo tiraste a la basura.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div>
+          <div class="section-kicker">¿Es para vos?</div>
+          <h2>Tres requisitos. Nada más.</h2>
+          <p class="sub">Este programa puede ayudarte si:</p>
+          <ul class="list">
+            <li>Sos arquitecto y tenés al menos 1 año de experiencia documentando proyectos.</li>
+            <li>Querés trabajar para afuera, pero no sabés por dónde empezar.</li>
+            <li>Entendés que conseguir oportunidades para afuera requiere trabajo y constancia.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>No es para vos si:</h3>
+          <ul class="list no">
+            <li>Esperás que alguien consiga entrevistas o trabajo por vos.</li>
+            <li>No estás dispuesto a aprender nuevas herramientas, procesos y formas de trabajar.</li>
+            <li>Buscás una solución rápida en lugar de construir una carrera a largo plazo.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-band" id="programa">
+      <div class="wrap">
+        <div class="section-kicker">El programa</div>
+        <h2>¿Cómo funciona Remoto Pro?</h2>
+        <p class="sub">Remoto Pro es un programa de acompañamiento para arquitectos que quieren dejar de competir únicamente en el mercado local y comenzar a posicionarse para oportunidades internacionales.</p>
+        <div class="grid steps">
+          <article class="step"><div class="number">01</div><h3>Experiencia BIM Internacional</h3><p>Aprendé a modelar y documentar proyectos bajo estándares utilizados por estudios de Estados Unidos. Construí experiencia demostrable para tu portfolio profesional.</p></article>
+          <article class="step"><div class="number">02</div><h3>Posicionamiento Profesional</h3><p>Desarrollá un CV, portfolio y LinkedIn alineados con las oportunidades que querés conseguir. Aprendé a comunicar tu experiencia de forma estratégica.</p></article>
+          <article class="step"><div class="number">03</div><h3>Oportunidades e Interview Mastery</h3><p>Aprendé dónde encontrar oportunidades, cómo aplicar y cómo enfrentar entrevistas con confianza para competir por oportunidades internacionales.</p></article>
+        </div>
+        <p class="sub" style="margin-top:28px">Durante 90 días trabajamos sobre tres áreas clave: Experiencia, Posicionamiento y Oportunidades. El objetivo es que te conviertas en un candidato competitivo para trabajar en proyectos internacionales.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-kicker">Casos de éxito</div>
+        <h2>Ellos ya trabajan de forma remota. Vos sos el próximo.</h2>
+        <div class="testimonials">
+          <article class="testimonial"><strong>Bianca</strong><span>Argentina · Consiguió trabajo remoto para un estudio de España.</span></article>
+          <article class="testimonial"><strong>Cande</strong><span>Argentina · Trabaja en proyectos para estudios de Estados Unidos.</span></article>
+          <article class="testimonial"><strong>Karen</strong><span>México · Cobra en dólares trabajando para estudios internacionales.</span></article>
+          <article class="testimonial"><strong>Pierangela</strong><span>Venezuela · Trabaja de forma remota para estudios internacionales.</span></article>
+        </div>
+        <p class="micro" style="margin-top:16px">Espacios reservados para incorporar los videos o imágenes originales de cada testimonio.</p>
+      </div>
+    </section>
+
+    <section class="cta" id="contacto">
+      <div class="wrap">
+        <div class="section-kicker">Primero hablamos. Después decidís.</div>
+        <h2>Agendá tu llamada de diagnóstico.</h2>
+        <p class="sub">En 20 minutos vemos tu situación y te mostramos cómo dar tu próximo paso para convertirte en un arquitecto que trabaja en el mercado internacional cobrando por el valor de su trabajo.</p>
+        <a class="btn btn-primary" href="https://enlaces.leanaguero.com/" target="_blank" rel="noopener">Agendar llamada de consulta</a>
+        <p class="micro" style="margin-top:28px;text-transform:uppercase;letter-spacing:.08em">Mientras seguís mandando CVs que nadie lee, hay arquitectos de LATAM consiguiendo oportunidades que vos ni siquiera llegás a ver.</p>
+        <p class="sub" style="margin:18px auto 0">Hay 68.000 estudios de arquitectura en Estados Unidos. Imaginá las oportunidades que se abren cuando tu perfil habla su idioma.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year">2026</span> Lean Aguero · Remoto Pro</div>
+  </footer>
+</body>
+</html>
